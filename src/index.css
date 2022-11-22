@@ -2,28 +2,22 @@
   box-sizing: border-box;
 }
 
-html, body {
-  font-family: sans-serif;
-  background: #5c28af;
+html,
+body {
+  font-family: "Karla", sans-serif;
+  background: #560bad;
   /* height: 100%;
   width: 100%; */
 }
 
-h2 {
-  font-size: 2.5rem;
+h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
   margin-bottom: 0;
 }
 
 h3 {
   font-size: 1.5rem;
-}
-
-.button {
-  padding: 1em 2.5em;
-  border-radius: 8px;
-  border: none;
-  font-size: 1.1rem;
-  margin-top: 2em;
 }
 
 .card {

@@ -1,0 +1,11 @@
+.button {
+    font-family: "Karla", sans-serif;
+    padding: 1em 2.5em;
+    border-radius: 15px;
+    border: none;
+    font-size: 1.3rem;
+    margin-top: 2em;
+    background-color: #4d5b9e;
+    color: white;
+    cursor: pointer;
+  }
