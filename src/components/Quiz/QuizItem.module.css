@@ -1,5 +1,6 @@
 .quizlist__quizitem {
     padding: 0.5em;
+    border-bottom: 1px solid #8d99ae;
 }
 
 .quizitem__h3 {
