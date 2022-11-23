@@ -2,7 +2,7 @@
     font-family: "Karla", sans-serif;
     background-color: white;
     padding: 0.5em 2em;
-    margin-right: 3em;
+    margin-bottom: 0.9em;
     border-radius: 10px;
     border: 1px solid #293264;
     font-weight: 800;
@@ -10,5 +10,11 @@
   }
 
   .answerbutton:hover{
-    background-color: #D6DBF5
+    background-color: #D6DBF5;
+}
+
+@media (min-width: 700px) {
+    .answerbutton {
+        margin-right: 3em;
+    }
 }
