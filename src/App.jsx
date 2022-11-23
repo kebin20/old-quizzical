@@ -1,11 +1,18 @@
 import React from "react";
-import Welcome from "./components/UI/Welcome"
+import Welcome from "./components/UI/Welcome";
+import QuizList from "./components/Quiz/QuizList";
 
 export default function App() {
-return (
-  <div>
-    <Welcome />
-  </div>
-)
-}
+  const [isShown, setIsShown] = React.useState(true);
 
+  function welcomeModalHandler() {
+    setIsShown((isShown) => !isShown);
+  }
+
+  return (
+    <div className="card">
+      {isShown && <Welcome onWelcomeModalHandler={welcomeModalHandler} />}
+      {!isShown && <QuizList />}
+    </div>
+  );
+}

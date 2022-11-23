@@ -1,7 +1,14 @@
-.answer-button {
+.answerbutton {
     font-family: "Karla", sans-serif;
-    padding: 1em;
-    border-radius: 15px;
-    border: 1px solid #4d5b9e;
-    color: #4d5b9e;
+    background-color: white;
+    padding: 0.5em 2em;
+    margin-right: 3em;
+    border-radius: 10px;
+    border: 1px solid #293264;
+    font-weight: 800;
+    cursor: pointer;
   }
+
+  .answerbutton:hover{
+    background-color: #D6DBF5
+}

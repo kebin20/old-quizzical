@@ -6,32 +6,23 @@ html,
 body {
   font-family: "Karla", sans-serif;
   background: #560bad;
+  color: #293264;
   /* height: 100%;
   width: 100%; */
-}
-
-h1 {
-  font-size: 3.5rem;
-  font-weight: 800;
-  margin-bottom: 0;
-}
-
-h3 {
-  font-size: 1.5rem;
 }
 
 .card {
   display: flex;
   position: absolute;
-  top: 20%;
+  top: 2%;
   left: 50%;
   transform: translate(-50%, 0);
-  max-width: 700px;
+  max-width: 900px;
   width: 90vw;
-  height: 60vh;
-  padding: 5em;
+  padding: 1em;
   background: white;
-  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   background-image: url(./components/UI/assets/Background.svg);
   flex-direction: column;
   justify-content: center;
