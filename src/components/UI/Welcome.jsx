@@ -3,11 +3,12 @@ import React from "react";
 
 import classes from "./Welcome.module.css";
 
+import Card from "./Card";
 import Button from "./Button";
 
 export default function Welcome(props) {
   return (
-    <div className={classes.modal}>
+    <Card className={classes.modal}>
       <h1 className={classes.welcome__h1}>Quizzical</h1>
       <h3 className={classes.welcome__h3}>Fun trivia quiz for everyone!</h3>
       <footer className="footer">
@@ -15,6 +16,6 @@ export default function Welcome(props) {
           Start Quiz
         </Button>
       </footer>
-    </div>
+    </Card>
   );
 }

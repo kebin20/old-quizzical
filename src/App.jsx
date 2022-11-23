@@ -10,7 +10,7 @@ export default function App() {
   }
 
   return (
-    <div className="card">
+    <div>
       {isShown && <Welcome onWelcomeModalHandler={welcomeModalHandler} />}
       {!isShown && <QuizList />}
     </div>

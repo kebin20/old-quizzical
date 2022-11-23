@@ -1,0 +1,16 @@
+.card {
+    display: flex;
+    position: absolute;
+    top: 2%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(./assets/Background.svg);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+  }
+
+ 
