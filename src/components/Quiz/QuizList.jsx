@@ -20,8 +20,7 @@ export default function QuizList(props) {
       "https://opentdb.com/api.php?amount=5&category=9&difficulty=medium&type=multiple"
     )
       .then((res) => res.json())
-      .then((data) => setAllQuiz(data.results));
-
+      .then((data) => setAllQuiz(prevAllQuizData => data.results));
   }, [quiz]);
 
   function getQuizData() {
@@ -41,8 +40,6 @@ export default function QuizList(props) {
     const question5 = allQuiz[4].question
       .replaceAll("&quot;", '"')
       .replaceAll("&#039;", "'");
-    const correct = allQuiz[randomNumber].correct_answer;
-    const incorrect = allQuiz[randomNumber].incorrect_answers;
     setQuiz((prevQuiz) => ({
       ...prevQuiz,
       questions: {
@@ -52,8 +49,6 @@ export default function QuizList(props) {
         fourth: question4,
         fifth: question5,
       },
-      correctAnswer: correct,
-      incorrectAnswer: incorrect,
       id: Math.ceil(Math.random() * 6),
     }));
   }
