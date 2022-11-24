@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 
 import AnswerButton from "../UI/AnswerButton";
@@ -8,8 +9,9 @@ export default function QuizItem(props) {
   return (
     <div className={classes.quizlist__quizitem}>
       <h3 className={classes.quizitem__h3}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci
-        tenetur?
+        {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci
+        tenetur? */}
+        {props.question}
       </h3>
       <div className={classes.quizitem__answers}>
         <AnswerButton>ANSWER</AnswerButton>
