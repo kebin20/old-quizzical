@@ -1,8 +1,7 @@
 .quizlist {
-    padding: 1em;
+    padding: 2.5em;
     display: flex;
     flex-direction: column;
     max-width: 900px;
     width: 90vw;
-    padding: 1em;
 }

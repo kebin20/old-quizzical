@@ -23,23 +23,38 @@ export default function QuizList(props) {
             question: item.question
               .replaceAll("&quot;", '"')
               .replaceAll("&#039;", "'"),
-            correct: item.correct_answer.replaceAll("&quot;", '"')
-            .replaceAll("&#039;", "'"),
-            // choices: [
-            //   { choice: item.correct_answer },
-            //   { choice: item.incorrect_answers[0] },
-            //   { choice: item.incorrect_answers[1] },
-            //   { choice: item.incorrect_answers[2] },
-            // ].sort(() => 0.5 - Math.random()),
+            correct: item.correct_answer
+              .replaceAll("&quot;", '"')
+              .replaceAll("&#039;", "'"),
             choices: [
-              item.correct_answer.replaceAll("&quot;", '"')
-              .replaceAll("&#039;", "'"),
-              item.incorrect_answers[0].replaceAll("&quot;", '"')
-              .replaceAll("&#039;", "'"),
-              item.incorrect_answers[1].replaceAll("&quot;", '"')
-              .replaceAll("&#039;", "'"),
-              item.incorrect_answers[2].replaceAll("&quot;", '"')
-              .replaceAll("&#039;", "'")
+              {
+                choice: item.correct_answer
+                  .replaceAll("&quot;", '"')
+                  .replaceAll("&#039;", "'"),
+                isSelected: false,
+                id: nanoid(),
+              },
+              {
+                choice: item.incorrect_answers[0]
+                  .replaceAll("&quot;", '"')
+                  .replaceAll("&#039;", "'"),
+                isSelected: false,
+                id: nanoid(),
+              },
+              {
+                choice: item.incorrect_answers[1]
+                  .replaceAll("&quot;", '"')
+                  .replaceAll("&#039;", "'"),
+                isSelected: false,
+                id: nanoid(),
+              },
+              {
+                choice: item.incorrect_answers[2]
+                  .replaceAll("&quot;", '"')
+                  .replaceAll("&#039;", "'"),
+                isSelected: false,
+                id: nanoid(),
+              },
             ].sort(() => 0.5 - Math.random()),
             id: nanoid(),
           });
@@ -50,10 +65,18 @@ export default function QuizList(props) {
 
   console.log(quiz);
 
+  const quizItemComponents = quiz.map((item) => {
+    return (
+      <QuizItem key={item.id} question={item.question} choices={item.choices} />
+    );
+  });
+
   return (
     <Card className={classes.quizlist}>
-      <QuizItem quizzes={quiz} />
+      {quizItemComponents}
       <Button>Check Answers</Button>
     </Card>
   );
 }
+
+// onHoldAnswer={() => holdAnswer(quiz.id)}

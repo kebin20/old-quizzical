@@ -9,6 +9,8 @@ export default function AnswerButton(props) {
       className={classes.answerbutton}
       type={props.type || "button"}
       onClick={props.onClick}
+      style={props.style}
+      name={props.name}
     >
       {props.children}
     </button>

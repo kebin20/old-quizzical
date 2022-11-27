@@ -10,9 +10,9 @@ export default function App() {
   }
 
   return (
-    <div>
+    <React.Fragment>
       {isShown && <Welcome onWelcomeModalHandler={welcomeModalHandler} />}
       {!isShown && <QuizList />}
-    </div>
+    </React.Fragment>
   );
 }
