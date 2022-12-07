@@ -11,6 +11,13 @@ export default function QuizList(props) {
   const [quiz, setQuiz] = React.useState([]);
 
   React.useEffect(() => {
+    /* This function turns HTML element entities into normal words */
+    function decodeHtml(html) {
+      const txt = document.createElement("textarea");
+      txt.innerHTML = html;
+      return txt.value;
+    }
+
     fetch(
       "https://opentdb.com/api.php?amount=5&category=9&difficulty=medium&type=multiple"
     )
@@ -20,38 +27,38 @@ export default function QuizList(props) {
         const newDataArray = [];
         dataArray.map((item) => {
           return newDataArray.push({
-            question: item.question
-              .replaceAll("&quot;", '"')
-              .replaceAll("&#039;", "'"),
-            correct: item.correct_answer
-              .replaceAll("&quot;", '"')
-              .replaceAll("&#039;", "'"),
+            question: decodeHtml(item.question),
+            // .replaceAll("&quot;", '"')
+            // .replaceAll("&#039;", "'"),
+            correct: decodeHtml(item.correct_answer),
+            // .replaceAll("&quot;", '"')
+            // .replaceAll("&#039;", "'"),
             choices: [
               {
-                choice: item.correct_answer
-                  .replaceAll("&quot;", '"')
-                  .replaceAll("&#039;", "'"),
+                choice: decodeHtml(item.correct_answer),
+                // .replaceAll("&quot;", '"')
+                // .replaceAll("&#039;", "'"),
                 isSelected: false,
                 id: nanoid(),
               },
               {
-                choice: item.incorrect_answers[0]
-                  .replaceAll("&quot;", '"')
-                  .replaceAll("&#039;", "'"),
+                choice: decodeHtml(item.incorrect_answers[0]),
+                // .replaceAll("&quot;", '"')
+                // .replaceAll("&#039;", "'"),
                 isSelected: false,
                 id: nanoid(),
               },
               {
-                choice: item.incorrect_answers[1]
-                  .replaceAll("&quot;", '"')
-                  .replaceAll("&#039;", "'"),
+                choice: decodeHtml(item.incorrect_answers[1]),
+                // .replaceAll("&quot;", '"')
+                // .replaceAll("&#039;", "'"),
                 isSelected: false,
                 id: nanoid(),
               },
               {
-                choice: item.incorrect_answers[2]
-                  .replaceAll("&quot;", '"')
-                  .replaceAll("&#039;", "'"),
+                choice: decodeHtml(item.incorrect_answers[2]),
+                // .replaceAll("&quot;", '"')
+                // .replaceAll("&#039;", "'"),
                 isSelected: false,
                 id: nanoid(),
               },
@@ -65,9 +72,26 @@ export default function QuizList(props) {
 
   console.log(quiz);
 
+  function holdAnswer(id) {
+    setQuiz((oldQuiz) =>
+      oldQuiz.map((quiz) => {
+        return quiz.choices.map((choice) => {
+          return choice.id === id
+            ? { ...choice, isSelected: !choice.isSelected }
+            : choice;
+        });
+      })
+    );
+  }
+
   const quizItemComponents = quiz.map((item) => {
     return (
-      <QuizItem key={item.id} question={item.question} choices={item.choices} />
+      <QuizItem
+        key={item.id}
+        question={item.question}
+        choices={item.choices}
+        holdAnswer={() => holdAnswer(item.choices.id)}
+      />
     );
   });
 
