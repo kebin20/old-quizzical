@@ -28,37 +28,27 @@ export default function QuizList(props) {
         dataArray.map((item) => {
           return newDataArray.push({
             question: decodeHtml(item.question),
-            // .replaceAll("&quot;", '"')
-            // .replaceAll("&#039;", "'"),
+
             correct: decodeHtml(item.correct_answer),
-            // .replaceAll("&quot;", '"')
-            // .replaceAll("&#039;", "'"),
+
             choices: [
               {
                 choice: decodeHtml(item.correct_answer),
-                // .replaceAll("&quot;", '"')
-                // .replaceAll("&#039;", "'"),
                 isSelected: false,
                 id: nanoid(),
               },
               {
                 choice: decodeHtml(item.incorrect_answers[0]),
-                // .replaceAll("&quot;", '"')
-                // .replaceAll("&#039;", "'"),
                 isSelected: false,
                 id: nanoid(),
               },
               {
                 choice: decodeHtml(item.incorrect_answers[1]),
-                // .replaceAll("&quot;", '"')
-                // .replaceAll("&#039;", "'"),
                 isSelected: false,
                 id: nanoid(),
               },
               {
                 choice: decodeHtml(item.incorrect_answers[2]),
-                // .replaceAll("&quot;", '"')
-                // .replaceAll("&#039;", "'"),
                 isSelected: false,
                 id: nanoid(),
               },
@@ -102,5 +92,3 @@ export default function QuizList(props) {
     </Card>
   );
 }
-
-// onHoldAnswer={() => holdAnswer(quiz.id)}
