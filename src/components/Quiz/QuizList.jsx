@@ -71,13 +71,29 @@ export default function QuizList(props) {
   //   );
   // }
 
-  function holdAnswer(id) {
+  // function holdAnswer(id) {
+  //   setQuiz((oldQuiz) =>
+  //     oldQuiz.map((quiz) => {
+  //       return {
+  //         ...quiz,
+  //         choices: quiz.choices.map((choice) =>
+  //           choice.id === id
+  //             ? { ...choice, isSelected: !choice.isSelected }
+  //             : choice
+  //         ),
+  //       };
+  //     })
+  //   );
+  // }
+
+  function holdAnswer(quizId, choiceId) {
     setQuiz((oldQuiz) =>
       oldQuiz.map((quiz) => {
+        if (quiz.id !== quizId) return quiz;
         return {
           ...quiz,
           choices: quiz.choices.map((choice) =>
-            choice.id === id
+            choice.id === choiceId
               ? { ...choice, isSelected: !choice.isSelected }
               : choice
           ),
@@ -95,7 +111,7 @@ export default function QuizList(props) {
         // holdAnswer={() =>
         //   holdAnswer(item.choices.forEach((choice) => choice.id))
         // }
-        holdAnswer={(id) => holdAnswer(id)}
+        holdAnswer={(id) => holdAnswer(item.id, id)}
       />
     );
   });
