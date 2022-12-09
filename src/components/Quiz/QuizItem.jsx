@@ -41,7 +41,7 @@ export default function QuizItem(props) {
           return (
             <AnswerButton
               key={choice.id}
-              onClick={() => props.holdAnswer(choice.id)}
+              onClick={() => {props.holdAnswer(choice.id)}}
               style={{
                 backgroundColor: choice.isSelected
                   ? "#D6DBF5"

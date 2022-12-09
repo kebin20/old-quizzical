@@ -11,6 +11,7 @@ export default function AnswerButton(props) {
       onClick={props.onClick}
       style={props.style}
       name={props.name}
+      disabled={props.disabled}
     >
       {props.children}
     </button>
