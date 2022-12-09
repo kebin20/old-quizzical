@@ -24,9 +24,8 @@ export default function QuizList(props) {
       .then((res) => res.json())
       .then((data) => {
         const dataArray = data.results;
-        const newDataArray = [];
-        dataArray.map((item) => {
-          return newDataArray.push({
+        const newDataArray = dataArray.map((item) => {
+          return {
             question: decodeHtml(item.question),
 
             correct: decodeHtml(item.correct_answer),
@@ -54,22 +53,35 @@ export default function QuizList(props) {
               },
             ].sort(() => 0.5 - Math.random()),
             id: nanoid(),
-          });
+          };
         });
         return setQuiz(newDataArray);
       });
   }, []);
 
-  console.log(quiz);
+  // function holdAnswer(id) {
+  //   setQuiz((oldQuiz) =>
+  //     oldQuiz.map((quiz) => {
+  //       return quiz.choices.map((choice) => {
+  //         return choice.id === id
+  //           ? { ...choice, isSelected: !choice.isSelected }
+  //           : choice;
+  //       });
+  //     })
+  //   );
+  // }
 
   function holdAnswer(id) {
     setQuiz((oldQuiz) =>
       oldQuiz.map((quiz) => {
-        return quiz.choices.map((choice) => {
-          return choice.id === id
-            ? { ...choice, isSelected: !choice.isSelected }
-            : choice;
-        });
+        return {
+          ...quiz,
+          choices: quiz.choices.map((choice) =>
+            choice.id === id
+              ? { ...choice, isSelected: !choice.isSelected }
+              : choice
+          ),
+        };
       })
     );
   }
@@ -80,7 +92,10 @@ export default function QuizList(props) {
         key={item.id}
         question={item.question}
         choices={item.choices}
-        holdAnswer={() => holdAnswer(item.choices.id)}
+        // holdAnswer={() =>
+        //   holdAnswer(item.choices.forEach((choice) => choice.id))
+        // }
+        holdAnswer={(id) => holdAnswer(id)}
       />
     );
   });
