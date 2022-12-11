@@ -71,16 +71,23 @@ export default function QuizList(props) {
   //   );
   // }
 
-  // function holdAnswer(id) {
+  // function checkAnswer(quizId) {
   //   setQuiz((oldQuiz) =>
   //     oldQuiz.map((quiz) => {
+  //       if (quiz.id !== quizId) return quiz;
   //       return {
   //         ...quiz,
-  //         choices: quiz.choices.map((choice) =>
-  //           choice.id === id
-  //             ? { ...choice, isSelected: !choice.isSelected }
-  //             : choice
-  //         ),
+  //         choices: quiz.choices.map((choice) => {
+  //           if (choice.isSelected && choice.choice === quiz.correct) {
+  //             return { ...choice, backgroundColor: "green" };
+  //           } else if (choice.isSelected && choice.choice !== quiz.correct) {
+  //             return { ...choice, backgroundColor: "red" };
+  //           } else if (!choice.isSelected && choice.choice === quiz.correct) {
+  //             return { ...choice, backgroundColor: "grey" };
+  //           } else {
+  //             return choice;
+  //           }
+  //         }),
   //       };
   //     })
   //   );
@@ -94,8 +101,10 @@ export default function QuizList(props) {
           ...quiz,
           choices: quiz.choices.map((choice) =>
             choice.id === choiceId
-              ? { ...choice, isSelected: !choice.isSelected }
-              : choice
+              ? // If the choice selected is the current choice, toggle its selected state
+                { ...choice, isSelected: !choice.isSelected }
+              : // Otherwise, deselect the choice
+                { ...choice, isSelected: false }
           ),
         };
       })
@@ -108,9 +117,6 @@ export default function QuizList(props) {
         key={item.id}
         question={item.question}
         choices={item.choices}
-        // holdAnswer={() =>
-        //   holdAnswer(item.choices.forEach((choice) => choice.id))
-        // }
         holdAnswer={(id) => holdAnswer(item.id, id)}
       />
     );
@@ -123,3 +129,11 @@ export default function QuizList(props) {
     </Card>
   );
 }
+
+//  once you press the "check answers" button,
+//  if the user selected answer is equal to the correct answer,
+//  then change the background color of the user selected button to green and all other incorrect answer buttons to grey,
+//  else if the user selected answer is NOT equal to the correct answer,
+//  then change the background color of the user selected answer to red and
+//  change the answer button which contains the right answer to green and
+//  all other incorrect answers to grey.

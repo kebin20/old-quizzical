@@ -38,15 +38,17 @@ export default function QuizItem(props) {
       <div key={props.id} className={classes.quizlist__quizitem}>
         <h3 className={classes.quizitem__h3}>{props.question}</h3>
         {props.choices.map((choice) => {
+          const styles = {
+            backgroundColor: choice.isSelected ? "#D6DBF5" : "white",
+          };
+
           return (
             <AnswerButton
               key={choice.id}
-              onClick={() => {props.holdAnswer(choice.id)}}
-              style={{
-                backgroundColor: choice.isSelected
-                  ? "#D6DBF5"
-                  : "white",
+              onClick={() => {
+                props.holdAnswer(choice.id);
               }}
+              style={styles}
             >
               {choice.choice}
             </AnswerButton>
