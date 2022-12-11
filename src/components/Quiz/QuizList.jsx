@@ -9,6 +9,7 @@ import classes from "./QuizList.module.css";
 
 export default function QuizList(props) {
   const [quiz, setQuiz] = React.useState([]);
+  const [endQuiz, setEndQuiz] = React.useState(false);
 
   React.useEffect(() => {
     /* This function turns HTML element entities into normal words */
@@ -59,6 +60,8 @@ export default function QuizList(props) {
       });
   }, []);
 
+  // console.log(quiz);
+
   // function holdAnswer(id) {
   //   setQuiz((oldQuiz) =>
   //     oldQuiz.map((quiz) => {
@@ -93,6 +96,10 @@ export default function QuizList(props) {
   //   );
   // }
 
+  function finishQuiz() {
+    setEndQuiz(true);
+  }
+
   function holdAnswer(quizId, choiceId) {
     setQuiz((oldQuiz) =>
       oldQuiz.map((quiz) => {
@@ -104,7 +111,7 @@ export default function QuizList(props) {
               ? // If the choice selected is the current choice, toggle its selected state
                 { ...choice, isSelected: !choice.isSelected }
               : // Otherwise, deselect the choice
-                { ...choice, isSelected: false }
+                choice
           ),
         };
       })
@@ -118,6 +125,8 @@ export default function QuizList(props) {
         question={item.question}
         choices={item.choices}
         holdAnswer={(id) => holdAnswer(item.id, id)}
+        endQuiz={endQuiz}
+        correct={quiz.correct}
       />
     );
   });
@@ -125,7 +134,7 @@ export default function QuizList(props) {
   return (
     <Card className={classes.quizlist}>
       {quizItemComponents}
-      <Button>Check Answers</Button>
+      <Button onClick={finishQuiz}>Check Answers</Button>
     </Card>
   );
 }
