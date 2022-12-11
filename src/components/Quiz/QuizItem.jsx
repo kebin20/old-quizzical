@@ -15,16 +15,33 @@ export default function QuizItem(props) {
             backgroundColor: choice.isSelected ? "#D6DBF5" : "white",
           };
 
-          const checkAnswerStyle = {
-            backgroundColor:
-              choice.isSelected && choice.choice === props.correct
-                ? "green"
-                : choice.isSelected && choice.choice !== props.correct
-                ? "red"
-                : "grey",
-          };
-
-          console.log(checkAnswerStyle);
+          function checkAnswerStyle() {
+            if (choice.isSelected && choice.choice === choice.correct) {
+              return {
+                backgroundColor: "#94D7A2",
+                color: "#4D5B9E",
+                border: "none",
+              };
+            } else if (choice.isSelected && choice.choice !== choice.correct) {
+              return {
+                backgroundColor: "#F8BCBC",
+                color: "#4D5B9E",
+                border: "none",
+              };
+            } else if (choice.choice === choice.correct) {
+              return {
+                backgroundColor: "#94D7A2",
+                color: "#4D5B9E",
+                border: "none",
+              };
+            } else {
+              return {
+                color: "#bfc0c0",
+                border: "1px solid #bfc0c0",
+                backgroundColor: "white",
+              };
+            }
+          }
 
           return (
             <AnswerButton
@@ -32,7 +49,7 @@ export default function QuizItem(props) {
               onClick={() => {
                 props.holdAnswer(choice.id);
               }}
-              style={props.endQuiz ? checkAnswerStyle : styles}
+              style={props.endQuiz ? checkAnswerStyle() : styles}
             >
               {choice.choice}
             </AnswerButton>

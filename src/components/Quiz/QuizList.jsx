@@ -28,28 +28,29 @@ export default function QuizList(props) {
         const newDataArray = dataArray.map((item) => {
           return {
             question: decodeHtml(item.question),
-
-            correct: decodeHtml(item.correct_answer),
-
             choices: [
               {
                 choice: decodeHtml(item.correct_answer),
                 isSelected: false,
+                correct: decodeHtml(item.correct_answer),
                 id: nanoid(),
               },
               {
                 choice: decodeHtml(item.incorrect_answers[0]),
                 isSelected: false,
+                correct: decodeHtml(item.correct_answer),
                 id: nanoid(),
               },
               {
                 choice: decodeHtml(item.incorrect_answers[1]),
                 isSelected: false,
+                correct: decodeHtml(item.correct_answer),
                 id: nanoid(),
               },
               {
                 choice: decodeHtml(item.incorrect_answers[2]),
                 isSelected: false,
+                correct: decodeHtml(item.correct_answer),
                 id: nanoid(),
               },
             ].sort(() => 0.5 - Math.random()),
@@ -60,41 +61,7 @@ export default function QuizList(props) {
       });
   }, []);
 
-  // console.log(quiz);
-
-  // function holdAnswer(id) {
-  //   setQuiz((oldQuiz) =>
-  //     oldQuiz.map((quiz) => {
-  //       return quiz.choices.map((choice) => {
-  //         return choice.id === id
-  //           ? { ...choice, isSelected: !choice.isSelected }
-  //           : choice;
-  //       });
-  //     })
-  //   );
-  // }
-
-  // function checkAnswer(quizId) {
-  //   setQuiz((oldQuiz) =>
-  //     oldQuiz.map((quiz) => {
-  //       if (quiz.id !== quizId) return quiz;
-  //       return {
-  //         ...quiz,
-  //         choices: quiz.choices.map((choice) => {
-  //           if (choice.isSelected && choice.choice === quiz.correct) {
-  //             return { ...choice, backgroundColor: "green" };
-  //           } else if (choice.isSelected && choice.choice !== quiz.correct) {
-  //             return { ...choice, backgroundColor: "red" };
-  //           } else if (!choice.isSelected && choice.choice === quiz.correct) {
-  //             return { ...choice, backgroundColor: "grey" };
-  //           } else {
-  //             return choice;
-  //           }
-  //         }),
-  //       };
-  //     })
-  //   );
-  // }
+  console.log(quiz);
 
   function finishQuiz() {
     setEndQuiz(true);
@@ -111,7 +78,7 @@ export default function QuizList(props) {
               ? // If the choice selected is the current choice, toggle its selected state
                 { ...choice, isSelected: !choice.isSelected }
               : // Otherwise, deselect the choice
-                choice
+                { ...choice, isSelected: false }
           ),
         };
       })
@@ -131,10 +98,18 @@ export default function QuizList(props) {
     );
   });
 
+  // const correctAnswers = 5;
+
   return (
     <Card className={classes.quizlist}>
       {quizItemComponents}
       <Button onClick={finishQuiz}>Check Answers</Button>
+      {/* {finishQuiz && (
+        <div className={classes.result}>
+          <p>You scored {correctAnswers}/5 answers</p>
+          <Button>Play Again</Button>
+        </div>
+      )} */}
     </Card>
   );
 }
