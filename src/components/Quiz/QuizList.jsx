@@ -10,6 +10,7 @@ import classes from "./QuizList.module.css";
 export default function QuizList(props) {
   const [quiz, setQuiz] = React.useState([]);
   const [endQuiz, setEndQuiz] = React.useState(false);
+  const [newGame, setNewGame] = React.useState(false);
 
   React.useEffect(() => {
     /* This function turns HTML element entities into normal words */
@@ -17,6 +18,10 @@ export default function QuizList(props) {
       const txt = document.createElement("textarea");
       txt.innerHTML = html;
       return txt.value;
+    }
+
+    if (newGame) {
+      return;
     }
 
     fetch(
@@ -64,7 +69,11 @@ export default function QuizList(props) {
   console.log(quiz);
 
   function finishQuiz() {
-    setEndQuiz(true);
+    setEndQuiz((prevEndQuiz) => !prevEndQuiz);
+  }
+
+  function startNewGame() {
+    setNewGame(false);
   }
 
   function holdAnswer(quizId, choiceId) {
@@ -98,18 +107,18 @@ export default function QuizList(props) {
     );
   });
 
-  // const correctAnswers = 5;
+  const correctAnswers = 5;
 
   return (
     <Card className={classes.quizlist}>
       {quizItemComponents}
-      <Button onClick={finishQuiz}>Check Answers</Button>
-      {/* {finishQuiz && (
+      {!endQuiz && <Button onClick={finishQuiz}>Check Answers</Button>}
+      {endQuiz && (
         <div className={classes.result}>
           <p>You scored {correctAnswers}/5 answers</p>
-          <Button>Play Again</Button>
+          <Button onClick={startNewGame}>Play Again</Button>
         </div>
-      )} */}
+      )}
     </Card>
   );
 }
