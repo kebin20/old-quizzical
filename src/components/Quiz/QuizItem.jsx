@@ -9,10 +9,11 @@ export default function QuizItem(props) {
 const [correctCount, setCorrectCount] = React.useState(0)
 
 function addToCorrectCount() {
-  setCorrectCount(correctCount + 1)
-}
+    setCorrectCount(correctCount + 1)
+  }
 
 props.onSaveCorrectCountData(correctCount)
+
 
 console.log(correctCount);
 
@@ -34,7 +35,7 @@ console.log(correctCount);
           function checkAnswerStyle() {
             /* this is to indicate that the selected answer is right, makes button go green*/
             if (choice.isSelected && choice.choice === choice.correct) {
-              // addToCorrectCount()
+              count++
               return {
                 backgroundColor: "#94D7A2",
                 color: "#4D5B9E",
@@ -80,5 +81,4 @@ console.log(correctCount);
     </div>
   );
 }
-
 // create a counter, and for every correct answer (green button), increase the counter by 1. 
