@@ -66,7 +66,7 @@ export default function QuizList(props) {
       });
   }, []);
 
-  console.log(quiz);
+  // console.log(quiz);
 
   function finishQuiz() {
     setEndQuiz((prevEndQuiz) => !prevEndQuiz);

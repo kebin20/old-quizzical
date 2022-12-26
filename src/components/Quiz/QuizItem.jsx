@@ -6,6 +6,14 @@ import AnswerButton from "../UI/AnswerButton";
 import classes from "./QuizItem.module.css";
 
 export default function QuizItem(props) {
+const [noOfCorrectAnswers, setNoOfCorrectAnswers] = React.useState
+
+function addToCorrectAnswers() {
+  setNoOfCorrectAnswers(noOfCorrectAnswers + 1)
+}
+
+console.log(noOfCorrectAnswers)
+
   return (
     <div>
       <div key={props.id} className={classes.quizlist__quizitem}>
@@ -16,24 +24,29 @@ export default function QuizItem(props) {
           };
 
           function checkAnswerStyle() {
+            /* this is to indicate that the selected answer is right, makes button go green*/
             if (choice.isSelected && choice.choice === choice.correct) {
+              addToCorrectAnswers()
               return {
                 backgroundColor: "#94D7A2",
                 color: "#4D5B9E",
                 border: "none",
               };
+              /* this is to indicate that the selected answer is wrong, makes button go red*/
             } else if (choice.isSelected && choice.choice !== choice.correct) {
               return {
                 backgroundColor: "#F8BCBC",
                 color: "#4D5B9E",
                 border: "none",
               };
+              /* this is to highlight the right answer if a selected answer is wrong*/
             } else if (choice.choice === choice.correct) {
               return {
                 backgroundColor: "#94D7A2",
                 color: "#4D5B9E",
                 border: "none",
               };
+              /* this is to grey out the incorrect answers*/
             } else {
               return {
                 color: "#bfc0c0",
@@ -59,3 +72,5 @@ export default function QuizItem(props) {
     </div>
   );
 }
+
+// create a counter, and for every correct answer (green button), increase the counter by 1. 
