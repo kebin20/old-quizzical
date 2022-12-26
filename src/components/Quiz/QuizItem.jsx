@@ -6,14 +6,15 @@ import AnswerButton from "../UI/AnswerButton";
 import classes from "./QuizItem.module.css";
 
 export default function QuizItem(props) {
-// const [noOfCorrectAnswers, setNoOfCorrectAnswers] = React.useState(props.noOfCorrectAnswers)
+const [correctCount, setCorrectCount] = React.useState(0)
 
-// function addToCorrectAnswers() {
-//   setNoOfCorrectAnswers(noOfCorrectAnswers + 1)
-//   props.updateNoOfCorrectAnswers(noOfCorrectAnswers + 1)
-// }
+function addToCorrectCount() {
+  setCorrectCount(correctCount + 1)
+}
 
-// console.log(noOfCorrectAnswers)
+props.onSaveCorrectCountData(correctCount)
+
+console.log(correctCount);
 
   return (
     <div>
@@ -22,12 +23,18 @@ export default function QuizItem(props) {
         {props.choices.map((choice) => {
           const styles = {
             backgroundColor: choice.isSelected ? "#D6DBF5" : "white",
-          };
+          }; 
+
+          React.useEffect(() => {
+            if (choice.isSelected && choice.choice === choice.correct) {
+              addToCorrectCount();
+            }
+          }, [choice.isSelected, choice.correct]);
 
           function checkAnswerStyle() {
             /* this is to indicate that the selected answer is right, makes button go green*/
             if (choice.isSelected && choice.choice === choice.correct) {
-              // addToCorrectAnswers()
+              // addToCorrectCount()
               return {
                 backgroundColor: "#94D7A2",
                 color: "#4D5B9E",

@@ -11,10 +11,10 @@ export default function QuizList(props) {
   const [quiz, setQuiz] = React.useState([]);
   const [endQuiz, setEndQuiz] = React.useState(false);
   const [newGame, setNewGame] = React.useState(false);
-  // const [noOfCorrectAnswers, setNoOfCorrectAnswers] = React.useState(0)
+  const [noOfCorrectAnswers, setNoOfCorrectAnswers] = React.useState()
 
-  function updateNoOfCorrectAnswers(newValue) {
-    setNoOfCorrectAnswers(newValue)
+  function addCorrectCountHandler(correctCount) {
+    setNoOfCorrectAnswers(correctCount)
   }
 
   React.useEffect(() => {
@@ -23,10 +23,6 @@ export default function QuizList(props) {
       const txt = document.createElement("textarea");
       txt.innerHTML = html;
       return txt.value;
-    }
-
-    if (newGame) {
-      return;
     }
 
     fetch(
@@ -78,7 +74,7 @@ export default function QuizList(props) {
   }
 
   function startNewGame() {
-    setNewGame(false);
+    setNewGame(true);
   }
 
   function holdAnswer(quizId, choiceId) {
@@ -108,7 +104,7 @@ export default function QuizList(props) {
         holdAnswer={(id) => holdAnswer(item.id, id)}
         endQuiz={endQuiz}
         correct={quiz.correct}
-        // updateNoOfCorrectAnswers={updateNoOfCorrectAnswers}
+        onSaveCorrectCountData={addCorrectCountHandler}
       />
     );
   });
@@ -119,7 +115,7 @@ export default function QuizList(props) {
       {!endQuiz && <Button onClick={finishQuiz}>Check Answers</Button>}
       {endQuiz && (
         <div className={classes.result}>
-          <p>You scored 0/5 answers</p>
+          <p>You scored {noOfCorrectAnswers}/5 answers</p>
           <Button onClick={startNewGame}>Play Again</Button>
         </div>
       )}
