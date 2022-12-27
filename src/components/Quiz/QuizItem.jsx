@@ -26,16 +26,16 @@ console.log(correctCount);
             backgroundColor: choice.isSelected ? "#D6DBF5" : "white",
           }; 
 
-          React.useEffect(() => {
-            if (choice.isSelected && choice.choice === choice.correct) {
-              addToCorrectCount();
-            }
-          }, [choice.isSelected, choice.correct]);
+          // React.useEffect(() => {
+          //   if (choice.isSelected && choice.choice === choice.correct) {
+          //     addToCorrectCount();
+          //   }
+          // }, [choice.isSelected, choice.correct]);
 
           function checkAnswerStyle() {
             /* this is to indicate that the selected answer is right, makes button go green*/
             if (choice.isSelected && choice.choice === choice.correct) {
-              count++
+              addToCorrectCount()
               return {
                 backgroundColor: "#94D7A2",
                 color: "#4D5B9E",
