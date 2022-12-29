@@ -6,14 +6,15 @@ import AnswerButton from "../UI/AnswerButton";
 import classes from "./QuizItem.module.css";
 
 export default function QuizItem(props) {
-  const [correctCount, setCorrectCount] = React.useState(0);
+const [correctCount, setCorrectCount] = React.useState(0)
 
-  function addToCorrectCount() {
-    setCorrectCount(correctCount + 1);
-    props.onSaveCorrectCountData(correctCount);
+function addToCorrectCount() {
+    setCorrectCount(correctCount + 1)
+    props.onSaveCorrectCountData(correctCount)
   }
 
-  // console.log(correctCount);
+
+console.log(correctCount);
 
   return (
     <div>
@@ -22,7 +23,7 @@ export default function QuizItem(props) {
         {props.choices.map((choice) => {
           const styles = {
             backgroundColor: choice.isSelected ? "#D6DBF5" : "white",
-          };
+          }; 
 
           // React.useEffect(() => {
           //   if (choice.isSelected && choice.choice === choice.correct) {
@@ -31,29 +32,29 @@ export default function QuizItem(props) {
           // }, [choice.isSelected, choice.correct]);
 
           function checkAnswerStyle() {
-            /* this is to indicate that the selected answer is right, makes button go green */
+            /* this is to indicate that the selected answer is right, makes button go green*/
             if (choice.isSelected && choice.choice === choice.correct) {
-              addToCorrectCount();
+              addToCorrectCount()
               return {
                 backgroundColor: "#94D7A2",
                 color: "#4D5B9E",
                 border: "none",
               };
-              /* this is to indicate that the selected answer is wrong, makes button go red */
+              /* this is to indicate that the selected answer is wrong, makes button go red*/
             } else if (choice.isSelected && choice.choice !== choice.correct) {
               return {
                 backgroundColor: "#F8BCBC",
                 color: "#4D5B9E",
                 border: "none",
               };
-              /* this is to highlight the right answer if a selected answer is wrong */
+              /* this is to highlight the right answer if a selected answer is wrong*/
             } else if (choice.choice === choice.correct) {
               return {
                 backgroundColor: "#94D7A2",
                 color: "#4D5B9E",
                 border: "none",
               };
-              /* this is to grey out the incorrect answers */
+              /* this is to grey out the incorrect answers*/
             } else {
               return {
                 color: "#bfc0c0",
@@ -79,4 +80,4 @@ export default function QuizItem(props) {
     </div>
   );
 }
-// create a counter, and for every correct answer (green button), increase the counter by 1.
+// create a counter, and for every correct answer (green button), increase the counter by 1. 
