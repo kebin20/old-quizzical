@@ -10,9 +10,8 @@ export default function QuizItem(props) {
 
   function addToCorrectCount() {
     setCorrectCount(correctCount + 1);
+    props.onSaveCorrectCountData(correctCount);
   }
-
-  props.onSaveCorrectCountData(correctCount);
 
   // console.log(correctCount);
 

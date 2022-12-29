@@ -10,7 +10,7 @@ import classes from "./QuizList.module.css";
 export default function QuizList(props) {
   const [quiz, setQuiz] = React.useState([]);
   const [endQuiz, setEndQuiz] = React.useState(false);
-  // const [newGame, setNewGame] = React.useState(false);
+  const [newGame, setNewGame] = React.useState(false);
   const [noOfCorrectAnswers, setNoOfCorrectAnswers] = React.useState(0);
 
   function saveCorrectCountData(count) {
@@ -73,9 +73,9 @@ export default function QuizList(props) {
     setEndQuiz((prevEndQuiz) => !prevEndQuiz);
   }
 
-  // function startNewGame() {
-  //   setNewGame(true);
-  // }
+  function startNewGame() {
+    setNewGame(true);
+  }
 
   function holdAnswer(quizId, choiceId) {
     setQuiz((oldQuiz) =>
@@ -116,7 +116,7 @@ export default function QuizList(props) {
       {endQuiz && (
         <div className={classes.result}>
           <p>You scored {noOfCorrectAnswers}/5 answers</p>
-          <Button>Play Again</Button>
+          <Button onClick={startNewGame}>Play Again</Button>
         </div>
       )}
     </Card>
