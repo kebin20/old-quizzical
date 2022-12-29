@@ -11,10 +11,10 @@ export default function QuizList(props) {
   const [quiz, setQuiz] = React.useState([]);
   const [endQuiz, setEndQuiz] = React.useState(false);
   // const [newGame, setNewGame] = React.useState(false);
-  const [noOfCorrectAnswers, setNoOfCorrectAnswers] = React.useState()
+  const [noOfCorrectAnswers, setNoOfCorrectAnswers] = React.useState(0);
 
-  function addCorrectCountHandler(correctCount) {
-    setNoOfCorrectAnswers(correctCount)
+  function saveCorrectCountData(count) {
+    setNoOfCorrectAnswers(count);
   }
 
   React.useEffect(() => {
@@ -104,7 +104,7 @@ export default function QuizList(props) {
         holdAnswer={(id) => holdAnswer(item.id, id)}
         endQuiz={endQuiz}
         correct={quiz.correct}
-        onSaveCorrectCountData={addCorrectCountHandler}
+        onSaveCorrectCountData={saveCorrectCountData}
       />
     );
   });
@@ -116,7 +116,7 @@ export default function QuizList(props) {
       {endQuiz && (
         <div className={classes.result}>
           <p>You scored {noOfCorrectAnswers}/5 answers</p>
-          <Button onClick={startNewGame}>Play Again</Button>
+          <Button>Play Again</Button>
         </div>
       )}
     </Card>
