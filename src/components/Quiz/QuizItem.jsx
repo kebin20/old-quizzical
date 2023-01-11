@@ -16,28 +16,28 @@ export default function QuizItem(props) {
           }; 
 
           function checkAnswerStyle() {
-            /* this is to indicate that the selected answer is right, makes button go green*/
+            /* this is to indicate that the selected answer is right, makes button go green */
             if (choice.isSelected && choice.choice === choice.correct) {
               return {
                 backgroundColor: "#94D7A2",
                 color: "#4D5B9E",
                 border: "none",
               };
-              /* this is to indicate that the selected answer is wrong, makes button go red*/
+              /* this is to indicate that the selected answer is wrong, makes button go red */
             } else if (choice.isSelected && choice.choice !== choice.correct) {
               return {
                 backgroundColor: "#F8BCBC",
                 color: "#4D5B9E",
                 border: "none",
               };
-              /* this is to highlight the right answer if a selected answer is wrong*/
+              /* this is to highlight the right answer if a selected answer is wrong */
             } else if (choice.choice === choice.correct) {
               return {
                 backgroundColor: "#94D7A2",
                 color: "#4D5B9E",
                 border: "none",
               };
-              /* this is to grey out the incorrect answers*/
+              /* this is to grey out the incorrect answers */
             } else {
               return {
                 color: "#bfc0c0",
