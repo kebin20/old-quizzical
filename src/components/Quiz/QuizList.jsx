@@ -70,6 +70,18 @@ export default function QuizList(props) {
   // console.log(quiz);
 
   function finishQuiz() {
+    let correctAnswers = 0;
+    quiz.forEach((item) => {
+      for(let i = 0; i < item.choices.length; ++i) {
+        const choice = item.choices[i];
+        if(choice.isSelected && choice.choice === choice.correct){
+          correctAnswers = correctAnswers + 1;
+          break;
+        }
+      }
+    });
+    
+    setNoOfCorrectAnswers(correctAnswers);
     setEndQuiz((prevEndQuiz) => !prevEndQuiz);
   }
 
@@ -94,7 +106,7 @@ export default function QuizList(props) {
       })
     );
   }
-
+  
   const quizItemComponents = quiz.map((item) => {
     return (
       <QuizItem
