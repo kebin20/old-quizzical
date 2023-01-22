@@ -10,7 +10,7 @@ import classes from "./QuizList.module.css";
 export default function QuizList(props) {
   const [quiz, setQuiz] = React.useState([]);
   const [endQuiz, setEndQuiz] = React.useState(false);
-  // const [newGame, setNewGame] = React.useState(false);
+  // const [newGame, setNewGame] = React.useState(true);
 
   React.useEffect(() => {
     /* This function turns HTML element entities into normal words */
@@ -62,15 +62,61 @@ export default function QuizList(props) {
       });
   }, []);
 
-  // console.log(quiz);
-
   function finishQuiz() {
     setEndQuiz((prevEndQuiz) => !prevEndQuiz);
   }
 
-  // function startNewGame() {
-  //   setNewGame(true);
-  // }
+  function startNewGame() {
+    setQuiz([]);
+    setEndQuiz(false);
+
+    function decodeHtml(html) {
+      const txt = document.createElement("textarea");
+      txt.innerHTML = html;
+      return txt.value;
+    }
+
+    fetch(
+      "https://opentdb.com/api.php?amount=5&category=9&difficulty=medium&type=multiple"
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        const dataArray = data.results;
+        const newDataArray = dataArray.map((item) => {
+          return {
+            question: decodeHtml(item.question),
+            choices: [
+              {
+                choice: decodeHtml(item.correct_answer),
+                isSelected: false,
+                correct: decodeHtml(item.correct_answer),
+                id: nanoid(),
+              },
+              {
+                choice: decodeHtml(item.incorrect_answers[0]),
+                isSelected: false,
+                correct: decodeHtml(item.correct_answer),
+                id: nanoid(),
+              },
+              {
+                choice: decodeHtml(item.incorrect_answers[1]),
+                isSelected: false,
+                correct: decodeHtml(item.correct_answer),
+                id: nanoid(),
+              },
+              {
+                choice: decodeHtml(item.incorrect_answers[2]),
+                isSelected: false,
+                correct: decodeHtml(item.correct_answer),
+                id: nanoid(),
+              },
+            ].sort(() => 0.5 - Math.random()),
+            id: nanoid(),
+          };
+        });
+        return setQuiz(newDataArray);
+      });
+  }
 
   function holdAnswer(quizId, choiceId) {
     setQuiz((oldQuiz) =>
@@ -109,7 +155,7 @@ export default function QuizList(props) {
       {!endQuiz && <Button onClick={finishQuiz}>Check Answers</Button>}
       {endQuiz && (
         <div className={classes.result}>
-          <Button>Play Again</Button>
+          <Button onClick={startNewGame}>Play Again</Button>
         </div>
       )}
     </Card>
