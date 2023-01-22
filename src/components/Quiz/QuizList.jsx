@@ -10,7 +10,6 @@ import classes from "./QuizList.module.css";
 export default function QuizList(props) {
   const [quiz, setQuiz] = React.useState([]);
   const [endQuiz, setEndQuiz] = React.useState(false);
-  // const [newGame, setNewGame] = React.useState(false);
   const [noOfCorrectAnswers, setNoOfCorrectAnswers] = React.useState(0)
 
   function addCorrectCountHandler(correctCount) {
