@@ -1,17 +1,45 @@
-# quizzical
+# Quizzical - Trivia App
 
-A quiz app that pulls quiz data from the Open Trivia Database. 
+## Table of contents
 
-TODO: 
+- [Overview](#overview)
+  - [Main function](#main-function)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
 
-- Display the number of correct answers once the answers have been checked (after pressing the "check answers" button)
 
-- Restart the game after clicking the "Play Again" button and bring user back to the welcome screen (COMPLETED)
+## Overview
 
-FUTURE IMPLEMENTATION: 
+### Main function
 
-- Need to know how to implement a loading screen when the API is being fetched
+It is a simple quiz app that outputs 5 different questions which in turn, is able to check whether you have answered the questions correctly or not. It will then display how many questions you got right. 
 
-REWORK CAN BE MADE:
+Data is fetched from the Open Trivia API.
 
-- Move business logic out from QuizList into the App.jsx
+### Links
+
+- Solution URL: [Github Repo](https://github.com/kebin20/coffee-roasters-website)
+- Live Site URL: [Coffee Roasters](https://your-live-site-url.com)
+
+## My process
+
+### Built with
+
+- Semantic HTML5 markup
+- CSS custom properties
+- Flexbox
+- CSS Grid
+- [React](https://reactjs.org/) - JS library
+
+### Continued development
+
+Todo features: 
+
+- Implement a loading screen when the data is being fetched
+- Add a timer to see how fast you can answer the questions
+- Add an option to choose which difficulty of quizzes you would like outputted
+
+Refactor: 
+
+- Move business logic out fo the Quiz List component to the App component to keep the code lean
