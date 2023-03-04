@@ -7,8 +7,8 @@
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
-- [Continued Development](#continued-development)
- -[Future Implementations](#future-implementations)
+- [Continued Development](#continued-development) 
+ - [Future Implementations](#future-implementations)
 
 ## Overview
 
