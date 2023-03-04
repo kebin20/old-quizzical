@@ -7,6 +7,8 @@
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
+- [Continued Development](#continued-development)
+ -[Future Implementations](#future-implementations)
 
 ## Overview
 
@@ -30,15 +32,15 @@ Data is fetched from the Open Trivia API.
 - Flexbox
 - CSS Grid
 - [React](https://reactjs.org/) - JS library
+- [![style: styled-components](https://img.shields.io/badge/style-%F0%9F%92%85%20styled--components-orange.svg?colorB=daa357&colorA=db748e)](https://github.com/styled-components/styled-components)
 
-### Continued development
+## Continued development
 
-Todo features:
+### Future Implementations
 
-- Implement a loading screen when the data is being fetched
-- Add a timer to see how fast you can answer the questions
-- Add an option to choose which difficulty of quizzes you would like outputted
+- Implement a loading screen when the data is being fetched.
 
-Refactor:
+- Add a timer to see how fast you can answer the questions.
 
-- Move business logic out fo the Quiz List component to the App component to keep the code lean
+- Add an option to choose which difficulty of quizzes you would like outputted and the number of quizzes outputted as desired.
+
