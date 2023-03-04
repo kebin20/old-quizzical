@@ -1,11 +1,24 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { nanoid } from "nanoid";
+import styled from "styled-components";
 
 import QuizItem from "./QuizItem";
 import Button from "../UI/Button";
 import Card from "../UI/Card";
 
 import classes from "./QuizList.module.css";
+
+const ScoreDisplay = styled.p`
+  padding-right: 2em;
+  font-size: 2rem;
+  font-weight: bold;
+`;
+
+const ResultScreen = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+`;
 
 function decodeHtml(html) {
   const txt = document.createElement("textarea");
@@ -153,10 +166,10 @@ export default function QuizList(props) {
       {quizItemComponents}
       {!endQuiz && <Button onClick={finishQuiz}>Check Answers</Button>}
       {endQuiz && (
-        <div className={classes.result}>
-          <p>You scored {noOfCorrectAnswers}/5 answers</p>
+        <ResultScreen>
+          <ScoreDisplay>You scored {noOfCorrectAnswers}/5 answers</ScoreDisplay>
           <Button onClick={startNewQuiz}>Play Again</Button>
-        </div>
+        </ResultScreen>
       )}
     </Card>
   );

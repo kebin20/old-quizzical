@@ -7,15 +7,3 @@
     padding-left: 6em;
     padding-right: 6em;
 }
-
-.result {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-}
-
-p {
-    padding-right: 2em;
-    font-size: 2rem;
-    font-weight: bold;
-}

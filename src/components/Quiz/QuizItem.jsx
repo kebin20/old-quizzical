@@ -1,20 +1,26 @@
 /* eslint-disable react/prop-types */
 import React from "react";
-
+import styled from "styled-components";
 import AnswerButton from "../UI/AnswerButton";
 
-import classes from "./QuizItem.module.css";
+const StyledQuizItem = styled.div`
+  padding: 1em;
+  border-bottom: 1px solid #8d99ae;
+`;
+
+const QuizItemTitle = styled.h3`
+  font-size: 1.4rem;
+`;
 
 export default function QuizItem(props) {
-
   return (
-    <div>
-      <div key={props.id} className={classes.quizlist__quizitem}>
-        <h3 className={classes.quizitem__h3}>{props.question}</h3>
+    <>
+      <StyledQuizItem key={props.id}>
+        <QuizItemTitle>{props.question}</QuizItemTitle>
         {props.choices.map((choice) => {
           const styles = {
             backgroundColor: choice.isSelected ? "#D6DBF5" : "white",
-          }; 
+          };
 
           function checkAnswerStyle() {
             /* this is to indicate that the selected answer is right, makes button go green */
@@ -60,8 +66,8 @@ export default function QuizItem(props) {
             </AnswerButton>
           );
         })}
-      </div>
-    </div>
+      </StyledQuizItem>
+    </>
   );
 }
-// create a counter, and for every correct answer (green button), increase the counter by 1. 
+// create a counter, and for every correct answer (green button), increase the counter by 1.
