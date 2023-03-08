@@ -1,24 +1,3 @@
-.answerbutton {
-    font-family: "Karla", sans-serif;
-    background-color: white;
-    padding: 0.5em 2em;
-    margin-bottom: 0.9em;
-    border-radius: 10px;
-    border: 1px solid #293264;
-    font-weight: 800;
-    cursor: pointer;
-  }
 
-  .answerbutton:hover{
-    background-color: #D6DBF5;
-}
 
-.selected {
-    background-color: #D6DBF5;
-}
 
-@media (min-width: 700px) {
-    .answerbutton {
-        margin-right: 3em;
-    }
-}

@@ -1,12 +1,36 @@
 /* eslint-disable react/prop-types */
 import React from "react";
+import styled from "styled-components";
+import { AnswerButtonProps } from "src/interfaces";
 
-import classes from "./AnswerButton.module.css";
+const StyledAnswerButton = styled.button`
+    font-family: "Karla", sans-serif;
+    background-color: white;
+    padding: 0.5em 2em;
+    margin-bottom: 0.9em;
+    border-radius: 10px;
+    border: 1px solid #293264;
+    font-weight: 800;
+    cursor: pointer;
 
-export default function AnswerButton(props) {
+    &:hover {
+      background-color: #D6DBF5;
+    }
+
+    @media (min-width: 700px) {
+    .answerbutton {
+        margin-right: 3em;
+    }
+  }
+
+  .selected {
+    background-color: #D6DBF5;
+}
+`
+
+export default function AnswerButton(props: AnswerButtonProps) {
   return (
-    <button
-      className={classes.answerbutton}
+    <StyledAnswerButton
       type={props.type || "button"}
       onClick={props.onClick}
       style={props.style}
@@ -14,6 +38,6 @@ export default function AnswerButton(props) {
       disabled={props.disabled}
     >
       {props.children}
-    </button>
+    </StyledAnswerButton>
   );
 }
