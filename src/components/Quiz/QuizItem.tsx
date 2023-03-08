@@ -59,9 +59,9 @@ export default function QuizItem(props) {
               key={choice.id}
               onClick={() => {
                 props.holdAnswer(choice.id);
-              }}
+              } }
               style={props.endQuiz ? checkAnswerStyle() : styles}
-            >
+              disabled={props.endQuiz ? true : false}            >
               {choice.choice}
             </AnswerButton>
           );

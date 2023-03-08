@@ -1,12 +1,34 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { nanoid } from "nanoid";
 import styled from "styled-components";
+import bgImage from "../../assets/Background.svg";
 
 import QuizItem from "./QuizItem";
 import Button from "../UI/Button";
-import Card from "../UI/Card";
 
-import classes from "./QuizList.module.css";
+const CardDiv = styled.div`
+  display: flex;
+  position: absolute;
+  top: 2%;
+  left: 50%;
+  padding: 2.5em;
+  transform: translate(-50%, 0);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url(${bgImage});
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+`;
+
+const QuizListCard = styled(CardDiv)`
+    align-items: stretch;
+    max-width: 900px;
+    width: 90vw;
+    padding-left: 6em;
+    padding-right: 6em;
+`
 
 const ScoreDisplay = styled.p`
   padding-right: 2em;
@@ -19,6 +41,11 @@ const ResultScreen = styled.div`
   align-items: center;
   justify-content: flex-end;
 `;
+
+const LoadingText = styled.h1`
+  text-align: center;
+  padding: 2em;
+`
 
 function decodeHtml(html) {
   const txt = document.createElement("textarea");
@@ -135,7 +162,7 @@ export default function QuizList(props) {
     );
   }
 
-  let quizItemComponents = <p>Setting Quizzes...</p>;
+  let quizItemComponents = <LoadingText>Setting Quizzes...</LoadingText>;
 
   if (quiz.length > 0) {
     quizItemComponents = quiz.map((item) => {
@@ -162,7 +189,7 @@ export default function QuizList(props) {
   }
 
   return (
-    <Card className={classes.quizlist}>
+    <QuizListCard>
       {quizItemComponents}
       {!endQuiz && <Button onClick={finishQuiz}>Check Answers</Button>}
       {endQuiz && (
@@ -171,7 +198,7 @@ export default function QuizList(props) {
           <Button onClick={startNewQuiz}>Play Again</Button>
         </ResultScreen>
       )}
-    </Card>
+    </QuizListCard>
   );
 }
 

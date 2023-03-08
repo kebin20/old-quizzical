@@ -7,7 +7,7 @@ const StyledAnswerButton = styled.button`
     font-family: "Karla", sans-serif;
     background-color: white;
     padding: 0.5em 2em;
-    margin-bottom: 0.9em;
+    margin: 1em 0.5em;
     border-radius: 10px;
     border: 1px solid #293264;
     font-weight: 800;
