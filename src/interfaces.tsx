@@ -18,3 +18,16 @@ export interface CardProps {
     name?: string;
     disabled?: boolean;
   }
+
+  export interface QuizArray {
+    question: string;
+    correct_answer: string;
+    incorrect_answers: string;
+    choices:
+      {
+        choice: string,
+        isSelected: boolean,
+        correct: string,
+        id: string,
+      }[];
+  }

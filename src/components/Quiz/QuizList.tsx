@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import { nanoid } from "nanoid";
 import styled from "styled-components";
 import bgImage from "../../assets/Background.svg";
+import { QuizArray } from "src/interfaces";
 
 import QuizItem from "./QuizItem";
 import Button from "../UI/Button";
@@ -47,13 +48,13 @@ const LoadingText = styled.h1`
   padding: 2em;
 `
 
-function decodeHtml(html) {
+function decodeHtml(html: string) {
   const txt = document.createElement("textarea");
   txt.innerHTML = html;
   return txt.value;
 }
 
-export default function QuizList(props) {
+export default function QuizList() {
   const [quiz, setQuiz] = useState([]);
   const [endQuiz, setEndQuiz] = useState(false);
   const [noOfCorrectAnswers, setNoOfCorrectAnswers] = useState(0);
@@ -82,7 +83,7 @@ export default function QuizList(props) {
   function obtainQuiz() {
     fetchQuizData().then((data) => {
       const dataArray = data.results;
-      const newDataArray = dataArray.map((item) => {
+      const newDataArray = dataArray.map((item: QuizArray) => {
         return {
           question: decodeHtml(item.question),
           choices: [
