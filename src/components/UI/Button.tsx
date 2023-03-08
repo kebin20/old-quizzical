@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from "react";
+import { ButtonProps } from "src/interfaces";
 import styled from "styled-components";
 
 const StartButton = styled.button`
@@ -15,7 +16,7 @@ const StartButton = styled.button`
   margin-top: 2em;
 `;
 
-export default function Button(props) {
+export default function Button(props: ButtonProps) {
   return (
     <StartButton type={props.type || "button"} onClick={props.onClick}>
       {props.children}

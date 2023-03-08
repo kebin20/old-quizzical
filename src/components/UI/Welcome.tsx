@@ -23,7 +23,7 @@ const Footer = styled.footer`
   justify-content: flex-end;
 `;
 
-export default function Welcome(props) {
+export default function Welcome(props: { onWelcomeModalHandler: () => void; }) {
   return (
     <Card className={classes.modal}>
       <WelcomeTitle>Quizzical</WelcomeTitle>

@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 import styled from "styled-components";
+import {CardProps} from "src/interfaces";
 import bgImage from "../../assets/Background.svg";
 
 const CardDiv = styled.div`
@@ -19,6 +20,6 @@ const CardDiv = styled.div`
   border-radius: 15px;
 `;
 
-export default function Card(props) {
+export default function Card(props: CardProps) {
   return <CardDiv className={`${props.className}`}>{props.children}</CardDiv>;
 }
