@@ -1,7 +1,10 @@
 {
   "compilerOptions": {
+    "plugins": [{ "name": "typescript-plugin-css-modules" }],
     "module": "esnext",
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "esnext",
     "allowJs": true,
     "jsx": "react",
     "moduleResolution": "node",
@@ -10,10 +13,11 @@
     "noEmit": true,
     "noImplicitAny": false,
     "strictNullChecks": true,
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {
-      "*": ["types/*"],
+      "*": ["types/*", "*", ".*"],
       "src/*": ["src/*"],
+      "@@/*": ["./*"],
       "styles/*": ["src/styles/*"],
       "images/*": ["src/images/*"],
       "components/*": ["src/components/*"],

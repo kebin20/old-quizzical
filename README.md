@@ -44,3 +44,7 @@ Data is fetched from the Open Trivia API.
 
 - Add an option to choose which difficulty of quizzes you would like outputted and the number of quizzes outputted as desired.
 
+### Resources
+
+- [StackOverflow](https://stackoverflow.com/questions/40382842/cant-import-css-scss-modules-typescript-says-cannot-find-module) - This article helped me to solve the issue of getting a type error when using CSS modules. 
+I only need to create a file called `typings.d.ts` in my src folder and added the following code: `declare module "*.module.css";`
