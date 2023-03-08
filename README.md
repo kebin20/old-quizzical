@@ -48,3 +48,5 @@ Data is fetched from the Open Trivia API.
 
 - [StackOverflow](https://stackoverflow.com/questions/40382842/cant-import-css-scss-modules-typescript-says-cannot-find-module) - This article helped me to solve the issue of getting a type error when using CSS modules. 
 I only need to create a file called `typings.d.ts` in my src folder and added the following code: `declare module "*.module.css";`
+
+-[Grepper](https://www.grepper.com/answers/294839/Cannot+find+module+.svg%27+or+its+corresponding+type+declarations.?ucard=1) - This one is a similar problem with the CSS modules, but for SVG files being imported as a module

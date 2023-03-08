@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 import styled from "styled-components";
-import bgImage from "./assets/Background.svg";
+import bgImage from "../../assets/Background.svg";
 
 const CardDiv = styled.div`
   display: flex;

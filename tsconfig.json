@@ -17,13 +17,14 @@
     "paths": {
       "*": ["types/*", "*", ".*"],
       "src/*": ["src/*"],
+      "assets/*": ["./src/assets/*"],
       "@@/*": ["./*"],
       "styles/*": ["src/styles/*"],
       "images/*": ["src/images/*"],
       "components/*": ["src/components/*"],
       "pages/*": ["src/pages/*"],
       "utils/*": ["src/utils/*"],
-      "css/*": ["src/.module.css/*"]
+      "css/*": ["src/.module.css/*"],
     },
   },
   
