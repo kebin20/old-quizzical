@@ -28,10 +28,9 @@ Data is fetched from the Open Trivia API.
 ### Built with
 
 - Semantic HTML5 markup
-- CSS custom properties
 - Flexbox
-- CSS Grid
 - [React](https://reactjs.org/) - JS library
+- [TypeScript](https://www.typescriptlang.org/) - Strongly typed programming language ontop of JS
 - [![style: styled-components](https://img.shields.io/badge/style-%F0%9F%92%85%20styled--components-orange.svg?colorB=daa357&colorA=db748e)](https://github.com/styled-components/styled-components)
 
 ## Continued development
@@ -49,4 +48,4 @@ Data is fetched from the Open Trivia API.
 - [StackOverflow](https://stackoverflow.com/questions/40382842/cant-import-css-scss-modules-typescript-says-cannot-find-module) - This article helped me to solve the issue of getting a type error when using CSS modules. 
 I only need to create a file called `typings.d.ts` in my src folder and added the following code: `declare module "*.module.css";`
 
--[Grepper](https://www.grepper.com/answers/294839/Cannot+find+module+.svg%27+or+its+corresponding+type+declarations.?ucard=1) - This one is a similar problem with the CSS modules, but for SVG files being imported as a module
+- [Grepper](https://www.grepper.com/answers/294839/Cannot+find+module+.svg%27+or+its+corresponding+type+declarations.?ucard=1) - This one is a similar problem with the CSS modules, but for SVG files being imported as a module

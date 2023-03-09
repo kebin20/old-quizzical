@@ -209,11 +209,3 @@ export default function QuizList() {
     </QuizListCard>
   );
 }
-
-//  once you press the "check answers" button,
-//  if the user selected answer is equal to the correct answer,
-//  then change the background color of the user selected button to green and all other incorrect answer buttons to grey,
-//  else if the user selected answer is NOT equal to the correct answer,
-//  then change the background color of the user selected answer to red and
-//  change the answer button which contains the right answer to green and
-//  all other incorrect answers to grey.
