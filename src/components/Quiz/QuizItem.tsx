@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from "react";
+import { ModifiedQuiz } from "src/interfaces";
 import styled from "styled-components";
 import AnswerButton from "../UI/AnswerButton";
 
@@ -12,12 +13,13 @@ const QuizItemTitle = styled.h3`
   font-size: 1.4rem;
 `;
 
-export default function QuizItem(props) {
+export default function QuizItem(props: ModifiedQuiz) {
   return (
     <>
       <StyledQuizItem key={props.id}>
         <QuizItemTitle>{props.question}</QuizItemTitle>
         {props.choices.map((choice) => {
+
           const styles = {
             backgroundColor: choice.isSelected ? "#D6DBF5" : "white",
           };
@@ -61,7 +63,7 @@ export default function QuizItem(props) {
                 props.holdAnswer(choice.id);
               } }
               style={props.endQuiz ? checkAnswerStyle() : styles}
-              disabled={props.endQuiz ? true : false}            >
+              disabled={props.endQuiz ? true : false}>
               {choice.choice}
             </AnswerButton>
           );

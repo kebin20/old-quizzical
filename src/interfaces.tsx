@@ -10,7 +10,6 @@ export interface CardProps {
   }
 
   export interface AnswerButtonProps {
-    // className?: string;
     onClick: () => void;
     children: React.ReactNode;
     type?: "button" | "submit" | "reset";
@@ -19,15 +18,23 @@ export interface CardProps {
     disabled?: boolean;
   }
 
-  export interface QuizArray {
-    question: string;
-    correct_answer: string;
-    incorrect_answers: string;
-    choices:
-      {
-        choice: string,
-        isSelected: boolean,
-        correct: string,
-        id: string,
-      }[];
+export interface FetchedQuiz {
+  choices: {
+    choice: string;
+    isSelected: boolean;
+    correct: string;
+    id: string;
+  }[];
+  id: string;
+  question: string;
+  correct: string[];
+}
+
+  export interface ModifiedQuiz extends FetchedQuiz {
+    correct_answer: string
+    incorrect_answers: string[]
+    endQuiz: boolean;
+    holdAnswer: (id: string) => void;
+    onSaveCorrectCountData: (count: number) => void;
   }
+

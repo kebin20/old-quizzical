@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import { nanoid } from "nanoid";
 import styled from "styled-components";
 import bgImage from "../../assets/Background.svg";
-import { QuizArray } from "src/interfaces";
+import { FetchedQuiz, ModifiedQuiz } from "src/interfaces";
 
 import QuizItem from "./QuizItem";
 import Button from "../UI/Button";
@@ -24,12 +24,12 @@ const CardDiv = styled.div`
 `;
 
 const QuizListCard = styled(CardDiv)`
-    align-items: stretch;
-    max-width: 900px;
-    width: 90vw;
-    padding-left: 6em;
-    padding-right: 6em;
-`
+  align-items: stretch;
+  max-width: 900px;
+  width: 90vw;
+  padding-left: 6em;
+  padding-right: 6em;
+`;
 
 const ScoreDisplay = styled.p`
   padding-right: 2em;
@@ -46,7 +46,7 @@ const ResultScreen = styled.div`
 const LoadingText = styled.h1`
   text-align: center;
   padding: 2em;
-`
+`;
 
 function decodeHtml(html: string) {
   const txt = document.createElement("textarea");
@@ -55,7 +55,7 @@ function decodeHtml(html: string) {
 }
 
 export default function QuizList() {
-  const [quiz, setQuiz] = useState([]);
+  const [quiz, setQuiz] = useState<FetchedQuiz[]>([]);
   const [endQuiz, setEndQuiz] = useState(false);
   const [noOfCorrectAnswers, setNoOfCorrectAnswers] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
@@ -83,7 +83,7 @@ export default function QuizList() {
   function obtainQuiz() {
     fetchQuizData().then((data) => {
       const dataArray = data.results;
-      const newDataArray = dataArray.map((item: QuizArray) => {
+      const newDataArray = dataArray.map((item: ModifiedQuiz) => {
         return {
           question: decodeHtml(item.question),
           choices: [
@@ -145,7 +145,7 @@ export default function QuizList() {
     obtainQuiz();
   }
 
-  function holdAnswer(quizId, choiceId) {
+  function holdAnswer(quizId: string, choiceId: string) {
     setQuiz((oldQuiz) =>
       oldQuiz.map((quiz) => {
         if (quiz.id !== quizId) return quiz;
@@ -166,19 +166,26 @@ export default function QuizList() {
   let quizItemComponents = <LoadingText>Setting Quizzes...</LoadingText>;
 
   if (quiz.length > 0) {
-    quizItemComponents = quiz.map((item) => {
-      return (
-        <QuizItem
-          key={item.id}
-          question={item.question}
-          choices={item.choices}
-          holdAnswer={(id) => holdAnswer(item.id, id)}
-          endQuiz={endQuiz}
-          correct={quiz.correct}
-          onSaveCorrectCountData={addCorrectCountHandler}
-        />
-      );
-    });
+    quizItemComponents = (
+      <>
+        {quiz.map((item) => {
+          return (
+            <QuizItem
+              key={item.id}
+              question={item.question}
+              choices={item.choices}
+              holdAnswer={(id: string) => holdAnswer(item.id, id)}
+              endQuiz={endQuiz}
+              correct={item.correct}
+              onSaveCorrectCountData={addCorrectCountHandler}
+              correct_answer={""}
+              incorrect_answers={[]}
+              id={""}
+            />
+          );
+        })}
+      </>
+    );
   }
 
   if (error) {
