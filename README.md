@@ -1,3 +1,5 @@
+![Game Layout](./screenshots/project-screenshot.png)
+
 # Quizzical - Trivia App
 
 ## Table of contents
