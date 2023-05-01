@@ -74,6 +74,7 @@ export default function QuizList() {
         throw new Error("An error has occurred!");
       }
       const data = await response.json();
+      console.log(data);
       return data;
     } catch (error) {
       setError(error.message);
