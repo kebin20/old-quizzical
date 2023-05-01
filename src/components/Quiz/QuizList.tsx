@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { nanoid } from "nanoid";
+const nanoid: () => string = require("nanoid");
 import styled from "styled-components";
 import bgImage from "../../assets/Background.svg";
 import { FetchedQuiz, ModifiedQuiz } from "src/interfaces";
@@ -198,7 +198,7 @@ export default function QuizList() {
   }
 
   return (
-    <QuizListCard>
+    <QuizListCard role="list">
       {quizItemComponents}
       {!endQuiz && <Button onClick={finishQuiz}>Check Answers</Button>}
       {endQuiz && (
