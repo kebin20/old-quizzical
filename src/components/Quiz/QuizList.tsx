@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { nanoid } from "nanoid";
+import { nanoid } from 'nanoid';
 import styled from "styled-components";
 import bgImage from "../../assets/Background.svg";
 import { FetchedQuiz, ModifiedQuiz } from "src/interfaces";
