@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { nanoid } from 'nanoid';
+import { nanoid } from "nanoid";
 import styled from "styled-components";
 import bgImage from "../../assets/Background.svg";
 import { FetchedQuiz, ModifiedQuiz } from "src/interfaces";
@@ -74,7 +74,6 @@ export default function QuizList() {
         throw new Error("An error has occurred!");
       }
       const data = await response.json();
-      console.log(data);
       return data;
     } catch (error) {
       setError(error.message);
