@@ -1,51 +1,42 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { nanoid } from "nanoid";
 import styled from "styled-components";
-import bgImage from "../../assets/Background.svg";
 import { FetchedQuiz, ModifiedQuiz } from "src/interfaces";
 
 import QuizItem from "./QuizItem";
 import Button from "../UI/Button";
 
-const CardDiv = styled.div`
+const QuizListCard = styled.div`
   display: flex;
-  position: absolute;
-  top: 2%;
-  left: 50%;
-  padding: 2.5em;
-  transform: translate(-50%, 0);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url(${bgImage});
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 15px;
-`;
-
-const QuizListCard = styled(CardDiv)`
-  align-items: stretch;
-  max-width: 900px;
-  width: 90vw;
-  padding-left: 6em;
-  padding-right: 6em;
+  padding: 3em 1.5em;
+  @media only screen and (min-width: 600px) {
+    padding: 3.5em;
+  }
 `;
 
 const ScoreDisplay = styled.p`
-  padding-right: 2em;
   font-size: 2rem;
   font-weight: bold;
 `;
 
 const ResultScreen = styled.div`
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  gap: 2em;
   justify-content: flex-end;
+  align-items: center;
+  padding: 1em;
+  margin-top: 1em;
+
+  @media only screen and (min-width: 600px) {
+    flex-direction: row;
+    margin-top: 0;
+  }
 `;
 
 const LoadingText = styled.h1`
   text-align: center;
-  padding: 2em;
 `;
 
 function decodeHtml(html: string) {
