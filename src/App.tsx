@@ -25,9 +25,6 @@ const QuizContainer = styled.div`
   background-size: cover;
   background-image: url(${bgImage});
   border-radius: 15px;
-
-  @media only screen and (min-width: 600px) {
-  }
 `;
 
 export default function App() {
